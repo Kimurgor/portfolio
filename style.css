@@ -153,6 +153,9 @@ p{
     transition: 0.5s;
 
 }
+.service-col p ul li{
+    list-style: none;
+}
 h3{
     text-align: center;
     font-weight: 600;

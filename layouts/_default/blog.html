@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    {{ $style2 := resources.Get "css/main.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style2.Permalink }}" />
+
+    {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint
+    }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?&family=Montserrat:wght@300;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Stay updated with the latest insights on climate change, sustainability, and environmental advocacy in the Global South. Explore articles, news, and expert opinions on the climate crisis."
+    />
+    <meta
+      name="keywords"
+      content="climate change blog, sustainability articles, environmental news, climate crisis updates, eco-friendly tips, renewable energy blog, climate action news, environmental advocacy"
+    />
+    <title>Blog - Global South Climate Initiatives</title>
+    <style>
+      .animate-me {
+        opacity: 0;
+      }
+    </style>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SPF092P0X5"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-SPF092P0X5");
+    </script>
+  </head>
+
+  <body class="bg-white font-sans">
+    {{- partial "header.html" . -}}
+    <main class="container mx-auto px-4 py-8 max-w-none">
+      <div class="w-full">
+        <article class="bg-white">
+          <div class="text-center mb-8">
+            <h4 class="text-green-500 uppercase text-sm font-semibold mb-2">
+              OUR BLOG
+            </h4>
+            <h1 class="text-5xl font-bold">
+              Latest Posts<span class="text-green-500">.</span>
+            </h1>
+          </div>
+          <div class="max-w-4xl mx-auto mb-12">
+            <p class="text-gray-600 text-center">
+              Stay updated with our latest insights, stories, and initiatives in
+              climate action across the Global South.
+            </p>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          >
+            {{ range first 6 (where .Site.RegularPages "Section" "blog") }}
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+              {{ if .Params.image }}
+              <img
+                src="{{ .Params.image }}"
+                alt="{{ .Title }}"
+                class="w-full h-48 object-cover"
+              />
+              {{ else }}
+              <div class="w-full h-48 bg-green-100"></div>
+              {{ end }}
+              <div class="p-6">
+                <h2 class="text-xl font-bold mb-2">
+                  <a
+                    href="{{ .Permalink }}"
+                    class="text-gray-800 hover:text-green-500"
+                    >{{ .Title }}</a
+                  >
+                </h2>
+                <p class="text-gray-600 text-sm mb-4">
+                  {{ .Date.Format "January 2, 2006" }}
+                </p>
+                <p class="text-gray-600 mb-4">{{ .Summary }}</p>
+                <a
+                  href="{{ .Permalink }}"
+                  class="text-green-500 font-semibold hover:text-green-600"
+                  >Read More</a
+                >
+              </div>
+            </div>
+            {{ end }}
+          </div>
+          <div class="text-center mt-12">
+            <a
+              href="/blog"
+              class="bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition duration-300"
+              >View All Posts</a
+            >
+          </div>
+        </article>
+      </div>
+    </main>
+    {{- partial "newsletter.html" . -}} {{- partial "footer.html" . -}}
+  </body>
+</html>

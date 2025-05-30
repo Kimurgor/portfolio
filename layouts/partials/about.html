@@ -1,0 +1,28 @@
+<section class="bg-black py-16">
+  <div class="container mx-auto px-4">
+    
+    <!-- Section Title (Optional) -->
+    <div class="text-center mb-12">
+      <p class="text-gray-500 text-sm font-light uppercase tracking-widest">Trusted by</p>
+    </div>
+    
+    <!-- Logos Grid -->
+    <div class="flex flex-wrap justify-center items-center gap-12 md:gap-16 lg:gap-20">
+      {{ range first 6 .Site.Data.logos.content.clients }}
+        {{ if .logo }}
+        <div class="cursor-pointer">
+          <img src="{{ .logo }}" 
+               alt="{{ .name }}" 
+               class="h-12 md:h-16 lg:h-20 w-auto opacity-90">
+        </div>
+        {{ end }}
+      {{ end }}
+    </div>
+    
+    <!-- Optional: Simple divider -->
+    <div class="flex justify-center mt-12">
+      <div class="w-24 h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent"></div>
+    </div>
+    
+  </div>
+</section>

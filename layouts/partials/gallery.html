@@ -1,0 +1,96 @@
+<section class="bg-black py-16 md:py-20">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 rounded-full border mb-6" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
+        <span class="text-xs md:text-sm font-medium uppercase tracking-widest" style="color: #DDD0B4;">Portfolio</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-extralight mb-4 tracking-tight" style="color: #DDD0B4;">
+        Selected Work
+      </h2>
+      <p class="text-lg md:text-xl font-light max-w-2xl mx-auto mb-8" style="color: #5C5C5C;">
+        A curated collection of my latest projects and design solutions
+      </p>
+      <a href="/portfolio" class="inline-flex items-center text-sm font-light uppercase tracking-widest transition-all duration-300 hover:translate-x-1" style="color: #DDD0B4;">
+        <span>View All Projects</span>
+        <div class="w-6 h-px ml-4 mr-2" style="background-color: #DDD0B4;"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {{ range $index, $element := .Site.Data.portfolio.content.projects }}
+        <div class="group relative overflow-hidden rounded-3xl aspect-[4/3] cursor-pointer backdrop-blur-sm border transition-all duration-500 hover:shadow-2xl" style="background: rgba(221, 208, 180, 0.03); border-color: rgba(221, 208, 180, 0.1);">
+          
+          <!-- Project Image -->
+          <div class="absolute inset-0 rounded-3xl overflow-hidden">
+            {{ if .image }}
+            <img src="{{ .image }}" alt="{{ .name }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            {{ else }}
+            <!-- Placeholder for missing images -->
+            <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, rgba(221, 208, 180, 0.1), rgba(92, 92, 92, 0.1));">
+              <div class="text-center">
+                <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 mx-auto" style="background-color: rgba(221, 208, 180, 0.1); border: 1px solid rgba(221, 208, 180, 0.2);">
+                  <svg class="w-8 h-8" style="color: #DDD0B4;" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                  </svg>
+                </div>
+                <p class="text-sm font-light" style="color: #5C5C5C;">{{ .name }}</p>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-500 rounded-3xl"></div>
+
+          <!-- Project Info -->
+          <div class="absolute inset-0 p-8 flex flex-col justify-end">
+            <div class="space-y-3">
+              <!-- Project Category -->
+              <div class="inline-flex items-center px-3 py-1 rounded-full border text-xs font-light uppercase tracking-widest backdrop-blur-sm" style="background-color: rgba(221, 208, 180, 0.1); border-color: rgba(221, 208, 180, 0.3); color: #DDD0B4;">
+                {{ .category | default "DESIGN" }}
+              </div>
+              
+              <!-- Project Title -->
+              <h3 class="text-2xl md:text-3xl font-light tracking-wide" style="color: #DDD0B4;">{{ .name }}</h3>
+              
+              <!-- Optional project description on hover -->
+              {{ if .text }}
+              <p class="text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="color: #5C5C5C; line-height: 1.5;">
+                {{ .text }}
+              </p>
+              {{ end }}
+            </div>
+          </div>
+
+          <!-- Hover Glow Effect -->
+          <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: linear-gradient(to bottom right, rgba(221, 208, 180, 0.08), transparent);"></div>
+          
+          <!-- Modern Corner Accents -->
+          <div class="absolute top-6 right-6 w-4 h-4 border-t border-r transition-all duration-300 rounded-tr-lg opacity-0 group-hover:opacity-60" style="border-color: #DDD0B4;"></div>
+          <div class="absolute bottom-6 left-6 w-4 h-4 border-b border-l transition-all duration-300 rounded-bl-lg opacity-0 group-hover:opacity-60" style="border-color: #DDD0B4;"></div>
+
+          <!-- Click overlay for navigation -->
+          {{ if .link }}
+          <a href="{{ .link }}" class="absolute inset-0 z-10" aria-label="View {{ .name }} project"></a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+      
+      <!-- Bottom accent -->
+      <div class="flex items-center justify-center mt-16">
+        <div class="flex items-center space-x-4 opacity-40">
+          <div class="w-12 h-px" style="background-color: #DDD0B4;"></div>
+          <div class="w-2 h-2 rounded-full" style="background-color: #DDD0B4;"></div>
+          <div class="w-12 h-px" style="background-color: #DDD0B4;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

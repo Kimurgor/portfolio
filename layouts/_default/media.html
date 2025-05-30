@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    {{ $style2 := resources.Get "css/main.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style2.Permalink }}" />
+
+    {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint
+    }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?&family=Montserrat:wght@300;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Access our media resources, including press releases, reports, and media coverage. Stay informed about our climate change initiatives and environmental campaigns in the Global South."
+    />
+    <meta
+      name="keywords"
+      content="climate change media, environmental press releases, climate change reports, media coverage on climate, environmental campaigns in the news, climate initiative media resources, sustainability news reports"
+    />
+    <title>Media - Global South Climate Initiatives</title>
+    <style>
+      .animate-me {
+        opacity: 0;
+      }
+    </style>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SPF092P0X5"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-SPF092P0X5");
+    </script>
+  </head>
+
+  <body class="bg-white font-sans">
+    {{- partial "header.html" . -}}
+    <main class="container mx-auto px-4 py-8 max-w-none">
+      <div class="w-full">
+        <article class="bg-white">
+          <div class="text-center mb-8">
+            <h4 class="text-green-500 uppercase text-sm font-semibold mb-2">
+              Media
+            </h4>
+            <h1 class="text-5xl font-bold">
+              News & Events<span class="text-green-500">.</span>
+            </h1>
+          </div>
+        </article>
+      </div>
+
+      <h2 class="text-2xl font-bold mb-6 pt-10">Events</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-10">
+        {{ $blogPages := where .Site.RegularPages "Section" "posts" }} {{ if
+        $blogPages }} {{ range first 3 $blogPages }}
+        <div class="transition-shadow duration-300 hover:shadow-xl">
+          <a href="{{ .Permalink }}" class="block">
+            <article class="bg-white rounded-lg overflow-hidden">
+              <div class="relative">
+                {{ with .Params.featured }}
+                <img
+                  src="{{ . }}"
+                  alt="{{ $.Title }}"
+                  class="w-full h-48 object-cover"
+                />
+                {{ end }}
+                <div
+                  class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4"
+                >
+                  <h2 class="text-lg font-bold">{{ .Title }}</h2>
+                </div>
+              </div>
+              <div class="p-5">
+                {{ with .Params.Categories }} {{ range . }}
+                <div class="text-xs font-bold text-[#ff9900] uppercase mb-2">
+                  {{ . }}
+                </div>
+                {{ end }} {{ end }}
+                <p class="text-gray-700">{{ .Summary }}</p>
+              </div>
+              <hr class="border-gray-200" />
+              <div class="text-sm bg-[#07be83] text-white p-3">
+                {{ .Date.Format "Monday, Jan 2, 2006" }} | {{ .Params.author }}
+              </div>
+            </article>
+          </a>
+        </div>
+        {{ end }} {{ else }}
+        <p class="text-gray-600">No available event found.</p>
+        {{ end }}
+      </div>
+      <div class="text-center py-6">
+        <a
+          href="/events"
+          class="bg-green-500 text-white px-8 py-2 rounded-full hover:bg-green-600 transition duration-300"
+          >View More Events</a
+        >
+      </div>
+
+      <h2 class="text-2xl font-bold mb-6">Blogs</h2>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 py-10">
+        {{ $blogPages := where .Site.RegularPages "Section" "blogs" }} {{ if
+        $blogPages }} {{ range first 3 $blogPages }}
+        <div
+          class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1"
+        >
+          <a href="{{ .Permalink }}" class="block">
+            <div class="relative h-48">
+              {{ with .Params.featured }}
+              <img
+                src="{{ . }}"
+                alt="{{ $.Title }}"
+                class="w-full h-full object-cover"
+              />
+              {{ end }}
+            </div>
+            <div class="p-6">
+              {{ with .Params.Categories }}
+              <div class="mb-4">
+                {{ range . }}
+                <span
+                  class="inline-block bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-full mr-2"
+                  >{{ . }}</span
+                >
+                {{ end }}
+              </div>
+              {{ end }}
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{{ .Title }}</h3>
+              <p class="text-gray-600 text-sm mb-4">{{ .Summary }}</p>
+              <div
+                class="flex justify-between items-center text-xs text-gray-500"
+              >
+                <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+                <span>{{ .Params.author }}</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        {{ end }} {{ else }}
+        <p class="text-gray-600">No blog posts found.</p>
+        {{ end }}
+      </div>
+      <div class="text-center py-6">
+        <a
+          href="/blogs"
+          class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition duration-300"
+          >Read More Articles</a
+        >
+      </div>
+    </main>
+    {{- partial "newsletter.html" . -}} {{- partial "footer.html" . -}}
+  </body>
+</html>

@@ -1,0 +1,10 @@
+content:
+  clients:
+    - name: "Client 1"
+      logo: "/images/logos/samaraelogo.jpg"
+    - name: "Client 2" 
+      logo: "/images/logos/Msportbw.png"
+    - name: "Client 3"
+      logo: "/images/logos/clanga.png"
+
+      

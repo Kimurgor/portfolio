@@ -1,0 +1,68 @@
+<script src="https://www.paypal.com/sdk/js?client-id={{ .Site.Params.paypalClientID }}&currency=USD"></script>
+<script>
+    document.getElementById('currency').addEventListener('change', function() {
+        var currencySymbol = this.value === 'USD' ? '$' : 'KSh';
+        document.getElementById('currency-symbol').textContent = currencySymbol;
+        
+        // Reinitialize PayPal buttons with the new currency
+        initializePayPalButton();
+    });
+
+    function initializePayPalButton() {
+        const currency = document.getElementById('currency').value;
+        
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                const amount = document.getElementById('amount').value;
+                
+                // Call your server to create the order
+                return fetch('{{ .Site.Params.apiBaseURL }}/api/create-paypal-order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        amount: amount,
+                        currency: currency
+                    })
+                })
+                .then(response => response.json())
+                .then(order => order.id);
+            },
+            onApprove: function(data, actions) {
+                // Call your server to capture the order
+                return fetch('{{ .Site.Params.apiBaseURL }}/api/capture-paypal-order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        orderID: data.orderID
+                    })
+                })
+                .then(response => response.json())
+                .then(details => {
+                    alert('Transaction completed. Transaction ID: ' + details.captureID);
+                    // Here you can add code to handle a successful transaction,
+                    // such as showing a thank you message or redirecting to a confirmation page
+                });
+            },
+            onError: function(err) {
+                console.error('PayPal error:', err);
+                alert('There was an error processing your payment. Please try again.');
+            }
+        }).render('#paypal-button-container');
+    }
+
+    // Initialize PayPal button on page load
+    initializePayPalButton();
+
+    // Validate form before PayPal button is clicked
+    document.querySelector('#paypal-button-container').addEventListener('click', function(event) {
+        const form = document.getElementById('donationForm');
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            alert('Please fill out all required fields before proceeding with the donation.');
+        }
+    }, true);
+</script>

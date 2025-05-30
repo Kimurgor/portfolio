@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{- partial "head.html" . -}}
+</head>
+
+<body>
+    {{- partial "header.html" . -}}
+    <main>
+        <form class="p-10 bg-base-100 shadow-md m-10 flex gap-5 flex-col max-w-sm mx-auto">
+            <h3 class="font-bold">Download {{ .Params.Title }}</h3>
+            <hr>
+            <label for="report_full_name">Full name:
+                <input class="outline-none border-b-2 border-b-base-200 focus:border-b-[#07be83] py-1"
+                    placeholder="John Doe" name="report_full_name" type="text">
+            </label>
+            <label for="report_company">Company:
+                <input class="outline-none border-b-2 border-b-base-200 focus:border-b-[#07be83] py-1"
+                    placeholder="Google LLC" name="report_company" type="text">
+            </label>
+            <label for="report_email">Email:
+                <input class="outline-none border-b-2 border-b-base-200 focus:border-b-[#07be83] py-1"
+                    placeholder="name@example.com" name="report_email" type="text">
+            </label>
+            <button id="download" data-report="{{ .Params.file }}" type="submit"
+                class="bg-[#07be83] text-white rounded-sm hover:bg-gray-900 py-2 px-5 disabled:bg-gray-300">Download
+                Report</button>
+        </form>
+        <script>
+            const name = document.querySelector("input[name='report_full_name']")
+            const company = document.querySelector("input[name='report_company']")
+            const email = document.querySelector("input[name='report_email']")
+            const downloadBtn = document.getElementById("download")
+
+            const validations = {
+                name: false,
+                company: false,
+                email: false
+            }
+
+            function validateInputs() {
+                const { email, company, name } = validations
+                if (!email || !company || !name) {
+                    downloadBtn.disabled = true
+                } else {
+                    downloadBtn.disabled = false
+                }
+            }
+            validateInputs()
+
+            name.addEventListener('input', function (e) {
+                if (name.value.length > 5) {
+                    validations.name = true
+                } else {
+                    validations.name = false
+                }
+                validateInputs()
+            })
+            company.addEventListener('input', function (e) {
+                if (company.value) {
+                    validations.company = true
+                } else {
+                    validations.company = false
+                }
+                validateInputs()
+            })
+            email.addEventListener('input', function (e) {
+                if (email.value) {
+                    validations.email = true
+                } else {
+                    validations.email = false
+                }
+                validateInputs()
+            })
+            async function downloadReport(e) {
+                const toSubmit = {
+                    name: name.value,
+                    company: company.value,
+                    email: email.value,
+                    other: "{{ .Params.Title | safeJS }}"
+                }
+
+                console.log(toSubmit)
+
+                e.preventDefault()
+                // const res = await fetch('http://localhost:8000/api/v1/users/su/downloads/', {
+                const res = await fetch('', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(toSubmit)
+                })
+                const report = e.target.getAttribute('data-report')
+                downloadFile(report, "{{ .Params.Title | safeJS }}.pdf");
+            }
+            downloadBtn.addEventListener('click', downloadReport)
+
+            function downloadFile(url, fileName) {
+                const anchor = document.createElement('a');
+                anchor.href = url;
+                anchor.download = fileName || 'download';
+                document.body.appendChild(anchor);
+                anchor.click();
+                document.body.removeChild(anchor);
+
+                name.value = ""
+                company.value = ""
+                email.value = ""
+            }
+
+        </script>
+
+    </main>
+    {{- partial "footer.html" . -}}
+
+</body>
+
+</html>

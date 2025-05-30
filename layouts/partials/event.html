@@ -1,0 +1,17 @@
+<!-- layouts/partials/event-card.html -->
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+    {{ if .Params.image }}
+    <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-full h-48 object-cover">
+    {{ else }}
+    <div class="w-full h-48 bg-green-100"></div>
+    {{ end }}
+    <div class="p-6">
+        <h2 class="text-xl font-bold mb-2">
+            <a href="{{ .Permalink }}" class="text-gray-800 hover:text-green-500">{{ .Title }}</a>
+        </h2>
+        <p class="text-gray-600 text-sm mb-2">{{ .Params.eventDate }}</p>
+        <p class="text-gray-600 text-sm mb-4">{{ .Params.location }}</p>
+        <p class="text-gray-600 mb-4">{{ .Summary }}</p>
+        <a href="{{ .Permalink }}" class="text-green-500 font-semibold hover:text-green-600">Learn More</a>
+    </div>
+</div>

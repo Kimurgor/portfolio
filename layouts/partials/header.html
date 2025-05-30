@@ -1,0 +1,131 @@
+<div x-data="{ mobileMenuOpen: false, dropdownOpen: false }" class="relative">
+  <!-- Compact Floating Header with Glassmorphism -->
+  <div class="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-center items-center py-3 relative">
+        
+        <!-- Centered Desktop Navigation with CTA -->
+        <div class="hidden md:flex items-center space-x-8">
+          <ul class="flex items-center space-x-8">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+              {{ if .HasChildren }}
+                <li class="relative" x-data="{ open: false }">
+                  <button @click="open = !open" class="text-gray-300 hover:text-amber-400 transition-colors duration-300 text-xs font-light tracking-wider uppercase">
+                    {{ .Name }}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 inline-block ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <ul x-show="open" @click.away="open = false" class="absolute left-0 mt-2 w-48 bg-black/80 backdrop-blur-md rounded-md shadow-lg py-1 z-10 border border-white/20">
+                    {{ range .Children }}
+                      <li><a href="{{ .URL }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-amber-400 transition-colors duration-200">{{ .Name }}</a></li>
+                    {{ end }}
+                  </ul>
+                </li>
+              {{ else }}
+                <li>
+                  <a href="{{ .URL }}" class="{{ if eq $currentPage.RelPermalink .URL }}text-amber-400{{ else }}text-gray-300{{ end }} hover:text-amber-400 transition-colors duration-300 text-xs font-light tracking-wider uppercase"{{ if eq $currentPage.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a>
+                </li>
+              {{ end }}
+            {{ end }}
+            
+            <!-- CTA Button centered with navigation -->
+            <li>
+              <a href="/contact" class="bg-amber-400/90 backdrop-blur-sm text-black px-4 py-1.5 text-xs font-medium tracking-wider hover:bg-amber-300/90 transition-all duration-300 uppercase rounded-sm">
+                Let's Talk
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden absolute right-0">
+          <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-300 hover:text-white focus:outline-none focus:text-white" aria-label="toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile menu overlay -->
+  <div x-show="mobileMenuOpen" 
+       x-transition:enter="transition ease-out duration-200"
+       x-transition:enter-start="opacity-0"
+       x-transition:enter-end="opacity-100"
+       x-transition:leave="transition ease-in duration-200"
+       x-transition:leave-start="opacity-100"
+       x-transition:leave-end="opacity-0"
+       class="fixed inset-0 z-50 bg-black bg-opacity-75 md:hidden"
+       @click="mobileMenuOpen = false">
+  </div>
+
+  <!-- Mobile menu content -->
+  <div x-show="mobileMenuOpen"
+       x-transition:enter="transition ease-out duration-200"
+       x-transition:enter-start="opacity-0 transform translate-x-full"
+       x-transition:enter-end="opacity-100 transform translate-x-0"
+       x-transition:leave="transition ease-in duration-200"
+       x-transition:leave-start="opacity-100 transform translate-x-0"
+       x-transition:leave-end="opacity-0 transform translate-x-full"
+       class="fixed top-0 right-0 bottom-0 z-50 w-64 bg-black/95 backdrop-blur-sm shadow-lg md:hidden border-l border-gray-800">
+    <div class="p-4">
+      <button @click="mobileMenuOpen = false" class="absolute top-4 right-4 text-gray-300 hover:text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <ul class="mt-8 space-y-4">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+          {{ if .HasChildren }}
+            <li x-data="{ subMenuOpen: false }">
+              <button @click="subMenuOpen = !subMenuOpen" class="flex justify-between items-center w-full py-2 text-lg font-light text-gray-300 hover:text-amber-400 uppercase tracking-wide">
+                {{ .Name }}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <ul x-show="subMenuOpen" class="pl-4 mt-2 space-y-2">
+                {{ range .Children }}
+                  <li><a href="{{ .URL }}" class="block py-2 text-gray-400 hover:text-amber-400 transition-colors duration-200">{{ .Name }}</a></li>
+                {{ end }}
+              </ul>
+            </li>
+          {{ else }}
+            <li>
+              <a href="{{ .URL }}" class="{{ if eq $currentPage.RelPermalink .URL }}text-amber-400{{ else }}text-gray-300{{ end }} block py-2 text-lg font-light hover:text-amber-400 uppercase tracking-wide transition-colors duration-200">{{ .Name }}</a>
+            </li>
+          {{ end }}
+        {{ end }}
+        
+        <!-- Mobile CTA -->
+        <li class="pt-4">
+          <a href="/contact" class="block w-full bg-amber-400 text-black px-6 py-3 text-center font-medium tracking-wide hover:bg-amber-300 transition-colors duration-300 uppercase">
+            Let's Talk
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Reduced padding for compact header -->
+<style>
+  body {
+    padding-top: 56px; /* Reduced from 88px for compact header */
+  }
+</style>
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script>
+  document.addEventListener('alpine:init', () => {
+      Alpine.data('header', () => ({
+          mobileMenuOpen: false,
+          dropdownOpen: false
+      }))
+  })
+</script>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{- partial "head.html" . -}}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        .prose {
+            font-family: 'Merriweather', serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white font-sans">
+    {{- partial "header.html" . -}}
+    <main class="container mx-auto px-4 py-12 max-w-3xl">
+        <article class="bg-white">
+            <!-- Title and Metadata -->
+            <header class="mb-16 text-center">
+                <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+                <div class="flex items-center justify-center text-gray-500 text-sm">
+                    {{ with .Params.author }}
+                   
+                    <span class="mr-3">{{ . }}</span>
+                    {{ end }}
+                    <span>{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</span>
+                </div>
+            </header>
+
+            <!-- Featured Image -->
+            {{ with .Params.featured }}
+            <div class="mb-16">
+                <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-auto object-cover rounded-lg">
+            </div>
+            {{ end }}
+
+            <!-- Content -->
+            <div class="prose prose-lg mx-auto">
+                {{ .Content }}
+            </div>
+
+            <!-- Tags -->
+            {{ with .Params.tags }}
+            <div class="mt-16">
+                {{ range . }}
+                <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="inline-block bg-gray-100 text-gray-800 rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2 hover:bg-gray-200 transition duration-300">{{ . }}</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </article>
+
+        <!-- Author Bio -->
+        <div class="mt-16 border-t border-gray-200 pt-16">
+            <div class="flex items-center">
+               
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">{{ .Params.author }}</h3>
+                    <p class="text-gray-600 text-sm">{{ .Site.Params.authorBio }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {{- partial "newsletter.html" . -}}
+    {{- partial "footer.html" . -}}
+</body>
+
+</html>

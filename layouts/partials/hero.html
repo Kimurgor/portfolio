@@ -1,0 +1,106 @@
+<section class="relative h-screen bg-black overflow-hidden">
+    <!-- Content -->
+    <div class="relative container mx-auto px-4 h-full flex flex-col justify-center items-center text-center max-w-6xl">
+        <div class="max-w-5xl space-y-8">
+            <!-- Small intro text -->
+            <div class="inline-flex items-center px-4 py-2 rounded-full border mb-4" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
+                <span class="text-xs md:text-sm font-medium uppercase tracking-widest" style="color: #DDD0B4;">Product Designer</span>
+            </div>
+            
+            <!-- Main Heading with Typewriter Effect -->
+            <div class="space-y-4">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight leading-tight tracking-tight" style="color: #5C5C5C;">
+                    Hello, I'm
+                </h1>
+                <h2 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light leading-none tracking-tight" style="color: #DDD0B4;">
+                    <span id="typewriter" class="relative">
+                        <span id="typed-text"></span>
+                        <span id="cursor" class="animate-pulse">|</span>
+                    </span>
+                </h2>
+            </div>
+            
+            <!-- Subtitle with emphasis -->
+            <div class="max-w-3xl mx-auto space-y-6 pt-8">
+                <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light italic leading-tight" style="color: #DDD0B4; opacity: 0.8;">
+                    Crafting Digital Experiences
+                </h3>
+                
+                <!-- Description -->
+                <p class="text-lg md:text-xl lg:text-2xl leading-relaxed font-light max-w-2xl mx-auto" style="color: #5C5C5C; line-height: 1.6;">
+                    I create intuitive and beautiful digital products<br>
+                    that solve real problems and delight users.
+                </p>
+            </div>
+            
+            <!-- Call to action hint -->
+            <div class="pt-8">
+                <div class="flex items-center justify-center space-x-3 opacity-60">
+                    <div class="w-8 h-px" style="background-color: #DDD0B4;"></div>
+                    <span class="text-sm font-light tracking-wider" style="color: #DDD0B4;">Scroll to explore</span>
+                    <div class="w-8 h-px" style="background-color: #DDD0B4;"></div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto mt-4 animate-bounce" style="color: #DDD0B4; opacity: 0.6;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const textToType = "Cyrus Kimurgor";
+    const typedTextElement = document.getElementById('typed-text');
+    const cursorElement = document.getElementById('cursor');
+    let currentIndex = 0;
+    
+    function typeWriter() {
+        if (currentIndex < textToType.length) {
+            typedTextElement.textContent += textToType.charAt(currentIndex);
+            currentIndex++;
+            setTimeout(typeWriter, 120); // Slightly faster typing
+        } else {
+            // Once typing is complete, hide cursor after a moment
+            setTimeout(() => {
+                cursorElement.style.opacity = '0';
+            }, 2000);
+        }
+    }
+    
+    // Start typing after a brief delay
+    setTimeout(typeWriter, 1500);
+});
+</script>
+
+<style>
+#cursor {
+    color: #DDD0B4;
+    font-weight: normal;
+    transition: opacity 0.3s ease;
+}
+
+#typewriter {
+    display: inline-block;
+}
+
+@keyframes pulse {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.animate-pulse {
+    animation: pulse 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+    40%, 43% { transform: translateY(-8px); }
+    70% { transform: translateY(-4px); }
+    90% { transform: translateY(-2px); }
+}
+
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+</style>

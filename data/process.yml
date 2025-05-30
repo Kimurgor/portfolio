@@ -1,0 +1,46 @@
+content:
+  steps:
+    - name: "CONCEPT & STRATEGY"
+      text: "We'll work with you to understand your goals, target audience, and brand identity. This foundation ensures your website effectively communicates your message and achieves your business objectives."
+      features:
+        - "Goal and audience analysis"
+        - "Brand identity development"
+        - "Content strategy planning"
+        - "Technical requirements assessment"
+      image: "/images/process/concept.jpg"
+    
+    - name: "DESIGN"
+      text: "Our creative team designs stunning, user-friendly interfaces that reflect your brand and engage your audience. We focus on both aesthetics and functionality to create exceptional user experiences."
+      features:
+        - "Custom visual design"
+        - "User experience optimization"
+        - "Mobile-responsive layouts"
+        - "Brand integration"
+      image: "/images/process/design.jpg"
+    
+    - name: "DEVELOPMENT"
+      text: "We bring your design to life with clean, efficient code. Our development process ensures your website is fast, secure, and optimized for search engines while maintaining the highest quality standards."
+      features:
+        - "Custom theme development"
+        - "Performance optimization"
+        - "SEO implementation"
+        - "CMS integration"
+      image: "/images/process/development.jpg"
+    
+    - name: "TESTING & OPTIMIZATION"
+      text: "Before launch, we rigorously test your website across all devices and browsers. We optimize performance, fix any issues, and ensure everything works perfectly for your users."
+      features:
+        - "Cross-browser testing"
+        - "Performance optimization"
+        - "Security implementation"
+        - "Final quality assurance"
+      image: "/images/process/testing.jpg"
+    
+    - name: "LAUNCH & SUPPORT"
+      text: "We handle the complete launch process and provide ongoing support to keep your website running smoothly. Your success is our priority, and we're here to help you grow."
+      features:
+        - "Professional website launch"
+        - "Post-launch support"
+        - "Performance monitoring"
+        - "Ongoing maintenance"
+      image: "/images/process/launch.jpg"

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{- partial "head.html" . -}}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>404 - Page Not Found | Cyrus Kimurgor</title>
+    
+    <meta name="description" content="Page not found - The page you're looking for doesn't exist. Return to Cyrus Kimurgor's portfolio and design work." />
+</head>
+
+<body class="bg-black font-light">
+    {{- partial "header.html" . -}}
+    
+    <main class="bg-black min-h-screen flex items-center">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                
+                <!-- Error Badge -->
+                <div class="inline-flex items-center px-4 py-2 rounded-full border mb-8" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
+                    <span class="text-xs md:text-sm font-medium uppercase tracking-widest" style="color: #DDD0B4;">Error 404</span>
+                </div>
+                
+                <!-- Main Heading -->
+                <div class="space-y-4 mb-12">
+                    <h1 class="text-6xl sm:text-7xl md:text-8xl font-extralight leading-none tracking-tight" style="color: #DDD0B4;">
+                        404
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-light italic tracking-tight" style="color: #DDD0B4; opacity: 0.8;">
+                        Page Not Found
+                    </h2>
+                </div>
+                
+                <!-- Error Message -->
+                <p class="text-lg md:text-xl font-light leading-relaxed mb-12" style="color: #5C5C5C; line-height: 1.6;">
+                    Sorry, the page you're looking for doesn't exist. It might have been moved or deleted.
+                </p>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="/" 
+                       class="group inline-flex items-center px-8 py-4 rounded-2xl border text-sm md:text-base font-light uppercase tracking-widest transition-all duration-300 hover:translate-y-[-2px] hover:shadow-2xl" 
+                       style="background-color: rgba(221, 208, 180, 0.1); border-color: rgba(221, 208, 180, 0.3); color: #DDD0B4;">
+                        <span>Go Home</span>
+                        <div class="w-6 h-px ml-4 mr-2" style="background-color: #DDD0B4;"></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </a>
+                    
+                    <a href="/portfolio" 
+                       class="group inline-flex items-center text-sm font-light uppercase tracking-widest transition-all duration-300 hover:translate-x-1" 
+                       style="color: #5C5C5C;">
+                        <span>View Portfolio</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {{- partial "footer.html" . -}}
+</body>
+
+</html>

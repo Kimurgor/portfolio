@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    {{ $style2 := resources.Get "css/main.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style2.Permalink }}" />
+
+    {{ $style := resources.Get "sass/main.scss" | toCSS | minify | fingerprint
+    }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?&family=Montserrat:wght@300;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn about our climate action programs dedicated to reducing carbon emissions, promoting renewable energy, and fostering environmental education and advocacy in the Global South."
+    />
+    <meta
+      name="keywords"
+      content=" climate action programs, environmental education, sustainability programs, carbon reduction initiatives, renewable energy projects, conservation programs, green energy programs, eco-friendly initiatives"
+    />
+    <title>Programs - Global South Climate Initiatives</title>
+    <style>
+      .animate-me {
+        opacity: 0;
+      }
+    </style>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-SPF092P0X5"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-SPF092P0X5");
+    </script>
+  </head>
+
+  <body class="bg-white font-sans">
+    {{- partial "header.html" . -}}
+    <main class="container mx-auto px-4 py-8 max-w-none">
+      <div class="w-full">
+        <article class="bg-white">
+          <div class="text-center mb-8">
+            <h4 class="text-green-500 uppercase text-sm font-semibold mb-2">
+              OUR PROGRAMS
+            </h4>
+            <h1 class="text-5xl font-bold">
+              Programs<span class="text-green-500">.</span>
+            </h1>
+          </div>
+          <div class="max-w-4xl mx-auto mb-12">
+            <p class="text-gray-600 text-center">
+              Global South Climate Initiatives is committed to driving impactful
+              change through focused programs designed to address the unique
+              challenges the Global South faces. Our core programs are:
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div>
+              <h2 class="text-3xl font-bold mb-4">
+                1. South-South Cooperation<span class="text-green-500">.</span>
+              </h2>
+              <p class="text-gray-600">
+                We believe in the power of collaboration and shared learning
+                among nations of the Global South. Our South-South Cooperation
+                program facilitates: Partnerships for Climate Action: We foster
+                strategic alliances with governments, organizations, and
+                communities across the Global South to exchange knowledge,
+                experiences, and best practices. Knowledge Hub: We develop and
+                share resources, tools, and platforms that empower our partners
+                to implement effective climate solutions.
+              </p>
+            </div>
+            <div>
+              <h2 class="text-3xl font-bold mb-4">
+                2. Research and Development<span class="text-green-500">.</span>
+              </h2>
+              <p class="text-gray-600">
+                Innovation is essential to tackle the complex challenges of
+                climate change. Our Research and Development program supports:
+                Cutting-Edge Research: We invest in scientific research to
+                develop and test new technologies, methodologies, and approaches
+                for climate change mitigation and adaptation. Pilot Projects: We
+                implement on-the-ground projects to demonstrate the feasibility
+                and scalability of innovative climate solutions. Open-Source
+                Knowledge: We share our research findings and data with the
+                global community to accelerate progress and inform
+                evidence-based decision-making
+              </p>
+            </div>
+            <div>
+              <h2 class="text-3xl font-bold mb-4">
+                3. Green Skilling<span class="text-green-500">.</span>
+              </h2>
+              <p class="text-gray-600">
+                A just transition to a sustainable future requires a skilled
+                workforce. Our Green Skilling program focuses on: Green Job
+                Creation: We support initiatives that create green jobs,
+                fostering economic growth while promoting environmentally
+                friendly practices and sustainable livelihoods. Policy Advocacy:
+                We work with policymakers to promote supportive policies and
+                incentives that encourage green job growth and a sustainable
+                economy.
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+    {{- partial "newsletter.html" . -}} {{- partial "footer.html" . -}}
+  </body>
+</html>

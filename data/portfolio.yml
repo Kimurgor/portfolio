@@ -1,0 +1,12 @@
+content:
+  projects:
+    - name: "Loyalty App"
+      image: "/images/portfolio/loyalty.png"
+      category: "UI/UX Design"
+      text: "Loyalty Program"
+      link: "/portfolio/space"
+    - name: "Mobile POS"
+      image: "/images/portfolio/pos.png"
+      category: "UI/UX Design"  
+      text: "Mobile Point Of Sales"
+      link: "/portfolio/nova"

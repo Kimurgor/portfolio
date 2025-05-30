@@ -1,0 +1,26 @@
+{
+  "name": "gsci",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./main.css -o ./assets/css/main.css",
+    "watch": "npx tailwindcss -i ./main.css -o ./assets/css/main.css --watch",
+    "server": "hugo server",
+    "start": "concurrently \"npm:server\" \"npm:watch\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kimurgor/GSCI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kimurgor/GSCI/issues"
+  },
+  "homepage": "https://github.com/Kimurgor/GSCI#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
+  }
+}

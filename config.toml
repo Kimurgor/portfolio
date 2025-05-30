@@ -1,0 +1,65 @@
+baseURL = ''
+languageCode = 'en-us'
+title = 'Cyrus - Portfolio'
+
+[related]
+  threshold = 1
+  toLower = true
+  includeNewer = true
+
+[[related.indices]]
+  name = "categories"
+  weight = 100
+
+[taxonomies]
+    category = "categories"
+    tags = "tags"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 20
+
+  [[menu.main]]
+    name = "Programs"
+    url = "/programs/"
+    weight = 30
+
+  [[menu.main]]
+    name = "Media"
+    url = "/media/"
+    weight = 40
+
+ 
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+# Site Parameters
+[params]
+  # Contact Information (for CTA WhatsApp integration)
+  whatsapp = "254700000000"  # Your WhatsApp number with country code (no +)
+  email = "hello@cyrusportfolio.com"
+  phone = "+254768835658"
+  
+  # Social Media Links (for footer)
+  [params.social]
+    facebook = "https://facebook.com/cyrusportfolio"
+    twitter = "https://twitter.com/cyrusportfolio"  
+    instagram = "https://instagram.com/cyrusportfolio"
+    linkedin = "https://linkedin.com/in/cyrus-kimurgor"
+  
+  # SEO and Meta
+  description = "Cyrus Kimurgor - Web Designer & Developer. Premium web design, development, and SEO services to help your business stand out."
+  keywords = "web design, web development, SEO, portfolio, Kenya, Nairobi"
+  author = "Cyrus Kimurgor"
+  
+  # Site Settings
+  copyright = "Cyrus Kimurgor"
+  since = "2024"

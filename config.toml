@@ -44,16 +44,15 @@ title = 'Cyrus - Portfolio'
 # Site Parameters
 [params]
   # Contact Information (for CTA WhatsApp integration)
-  whatsapp = "254700000000"  # Your WhatsApp number with country code (no +)
-  email = "hello@cyrusportfolio.com"
+  whatsapp = "254768835658"  # Your WhatsApp number with country code (no +)
   phone = "+254768835658"
   
   # Social Media Links (for footer)
   [params.social]
-    facebook = "https://facebook.com/cyrusportfolio"
-    twitter = "https://twitter.com/cyrusportfolio"  
-    instagram = "https://instagram.com/cyrusportfolio"
-    linkedin = "https://linkedin.com/in/cyrus-kimurgor"
+    facebook = "https://www.facebook.com/kimurgor.cyrus"
+    twitter = "https://x.com/kimurgorcyrus?t=Os0o4lQu4yms_hfXAmS_gg&s=09"  
+    instagram = "https://www.facebook.com/share/18uDMbDZgD/"
+    linkedin = "https://www.linkedin.com/in/cyrus-kimurgor-48a634210/"
   
   # SEO and Meta
   description = "Cyrus Kimurgor - Web Designer & Developer. Premium web design, development, and SEO services to help your business stand out."

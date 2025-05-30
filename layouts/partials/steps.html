@@ -1,7 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved Process Timeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
 <section class="bg-black py-16 md:py-20">
   <div class="container mx-auto px-4">
     <!-- Section Header -->
-    <div class="text-center mb-20">
+    <div class="text-center mb-16">
       <div class="inline-flex items-center px-4 py-2 rounded-full border mb-6" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
         <span class="text-xs md:text-sm font-medium uppercase tracking-widest" style="color: #DDD0B4;">THE PROCESS</span>
       </div>
@@ -17,94 +27,237 @@
       </p>
     </div>
 
-    <!-- Alternating Timeline -->
-    <div class="relative max-w-6xl mx-auto">
-      <!-- Straight Vertical Line - More Faded -->
-      <div class="absolute left-1/2 transform -translate-x-1/2 w-px h-full hidden lg:block opacity-30" style="background: linear-gradient(to bottom, #DDD0B4, #5C5C5C);"></div>
+    <!-- Timeline -->
+    <div class="relative max-w-5xl mx-auto">
+      <!-- Vertical Line -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 w-px h-full hidden lg:block opacity-20" style="background: linear-gradient(to bottom, #DDD0B4, #5C5C5C);"></div>
       
-      <!-- Steps -->
-      <div class="space-y-12 md:space-y-16">
-        {{ range $index, $element := .Site.Data.process.content.steps }}
-        <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center {{ if eq $index 1 }}lg:flex-row-reverse{{ else if eq $index 3 }}lg:flex-row-reverse{{ end }}">
+      <!-- Process Steps -->
+      <div class="space-y-8 md:space-y-12">
+        
+        <!-- Step 1 - Discovery -->
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+          <!-- Timeline Dot -->
+          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full z-10 hidden lg:block" style="background-color: #DDD0B4; box-shadow: 0 0 0 6px rgba(221, 208, 180, 0.1);"></div>
           
-          <!-- Modern Step Number Badge on Line -->
-          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center z-10 shadow-md backdrop-blur-sm border hidden lg:flex" style="background-color: #DDD0B4; border-color: #5C5C5C;">
-            <span class="text-black font-light text-xs tracking-wider">{{ printf "%02d" (add $index 1) }}</span>
-          </div>
-          
-          <!-- Step Content -->
-          <div class="order-2 {{ if eq $index 1 }}lg:order-1{{ else if eq $index 3 }}lg:order-1{{ else }}lg:order-2{{ end }}">
-            <div class="bg-gradient-to-br from-gray-900/80 to-gray-800/40 backdrop-blur-sm rounded-2xl p-4 lg:p-6 border border-gray-700/50 hover:border-yellow-400/30 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-400/10 group">
-              
-              <!-- Mobile Step Number - Modern -->
-              <div class="flex items-center mb-4 lg:hidden">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center shadow-md mr-2 backdrop-blur-sm border" style="background-color: #DDD0B4; border-color: #5C5C5C;">
-                  <span class="text-black font-light text-xs tracking-wider">{{ printf "%02d" (add $index 1) }}</span>
+          <!-- Content Card -->
+          <div class="lg:order-2">
+            <div class="group">
+              <div class="backdrop-blur-sm rounded-2xl p-6 md:p-8 border transition-all duration-300 group-hover:shadow-xl" style="background: rgba(221, 208, 180, 0.03); border-color: rgba(221, 208, 180, 0.1);">
+                <h3 class="text-xl md:text-2xl font-light tracking-wide uppercase mb-4" style="color: #DDD0B4;">Discovery</h3>
+                <p class="text-base leading-relaxed font-light mb-6" style="color: #5C5C5C; line-height: 1.6;">Understanding your goals, users, and market to establish a solid foundation for the design process.</p>
+                
+                <div class="space-y-2">
+                  <div class="flex items-center text-sm font-light" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Stakeholder interviews</span>
+                  </div>
+                  <div class="flex items-center text-sm font-light" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>User research & personas</span>
+                  </div>
+                  <div class="flex items-center text-sm font-light" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Competitive analysis</span>
+                  </div>
                 </div>
-                <div class="w-8 h-px" style="background: linear-gradient(to right, #DDD0B4, transparent);"></div>
               </div>
-              
-              <!-- Desktop Step Number - Modern -->
-              <div class="hidden lg:flex items-center mb-4 {{ if eq $index 1 }}justify-end{{ else if eq $index 3 }}justify-end{{ end }}">
-                {{ if eq $index 1 }}
-                <div class="w-12 h-px mr-3" style="background: linear-gradient(to left, #DDD0B4, transparent); opacity: 0.6;"></div>
-                <span class="text-3xl md:text-4xl font-thin tracking-wider" style="color: #DDD0B4; opacity: 0.3;">{{ printf "%02d" (add $index 1) }}</span>
-                {{ else if eq $index 3 }}
-                <div class="w-12 h-px mr-3" style="background: linear-gradient(to left, #DDD0B4, transparent); opacity: 0.6;"></div>
-                <span class="text-3xl md:text-4xl font-thin tracking-wider" style="color: #DDD0B4; opacity: 0.3;">{{ printf "%02d" (add $index 1) }}</span>
-                {{ else }}
-                <span class="text-3xl md:text-4xl font-thin tracking-wider mr-3" style="color: #DDD0B4; opacity: 0.3;">{{ printf "%02d" (add $index 1) }}</span>
-                <div class="w-12 h-px" style="background: linear-gradient(to right, #DDD0B4, transparent); opacity: 0.6;"></div>
-                {{ end }}
-              </div>
-              
-              <!-- Step Title -->
-              <h4 class="text-xl md:text-2xl lg:text-3xl font-light mb-4 uppercase tracking-wide {{ if eq $index 1 }}lg:text-right{{ else if eq $index 3 }}lg:text-right{{ end }}" style="color: #DDD0B4;">
-                {{ .name }}
-              </h4>
-              
-              <!-- Step Description -->
-              <p class="text-base md:text-lg font-light leading-relaxed mb-6 {{ if eq $index 1 }}lg:text-right{{ else if eq $index 3 }}lg:text-right{{ end }}" style="color: #5C5C5C;">
-                {{ .text }}
-              </p>
-              
-              <!-- Step Features -->
-              {{ if .features }}
-              <div class="space-y-4 {{ if eq $index 1 }}lg:flex lg:flex-col lg:items-end{{ else if eq $index 3 }}lg:flex lg:flex-col lg:items-end{{ end }}">
-                {{ range .features }}
-                <div class="flex items-center text-sm md:text-base font-light {{ if eq $index 1 }}lg:flex-row-reverse{{ else if eq $index 3 }}lg:flex-row-reverse{{ end }}" style="color: #5C5C5C;">
-                  <div class="w-1.5 h-1.5 rounded-full {{ if eq $index 1 }}ml-3 lg:ml-0 lg:mr-3{{ else if eq $index 3 }}ml-3 lg:ml-0 lg:mr-3{{ else }}mr-3{{ end }} flex-shrink-0" style="background-color: #DDD0B4;"></div>
-                  <span>{{ . }}</span>
-                </div>
-                {{ end }}
-              </div>
-              {{ end }}
-              
-              <!-- Card Glow Effect -->
-              <div class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: linear-gradient(to bottom right, rgba(221, 208, 180, 0.05), transparent);"></div>
-              
-              <!-- Modern Corner Accents -->
-              <div class="absolute top-4 right-4 w-3 h-3 border-t border-r transition-colors duration-300 rounded-tr-lg" style="border-color: rgba(221, 208, 180, 0.2);" onmouseover="this.style.borderColor='rgba(221, 208, 180, 0.6)'" onmouseout="this.style.borderColor='rgba(221, 208, 180, 0.2)'"></div>
-              <div class="absolute bottom-4 left-4 w-3 h-3 border-b border-l transition-colors duration-300 rounded-bl-lg" style="border-color: rgba(221, 208, 180, 0.2);" onmouseover="this.style.borderColor='rgba(221, 208, 180, 0.6)'" onmouseout="this.style.borderColor='rgba(221, 208, 180, 0.2)'"></div>
             </div>
           </div>
 
-          <!-- Empty Visual Space -->
-          <div class="order-1 {{ if eq $index 1 }}lg:order-2{{ else if eq $index 3 }}lg:order-2{{ else }}lg:order-1{{ end }}">
-            <div class="w-full h-48 lg:h-56 bg-gradient-to-br from-gray-900/30 to-gray-800/10 rounded-2xl border border-gray-700/30 backdrop-blur-sm"></div>
+          <!-- Visual Accent -->
+          <div class="lg:order-1">
+            <div class="w-full h-48 rounded-2xl border backdrop-blur-sm flex items-center justify-center" style="background: rgba(221, 208, 180, 0.02); border-color: rgba(221, 208, 180, 0.08);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center border" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
+                <svg class="w-6 h-6" style="color: #DDD0B4;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
-        {{ end }}
+
+        <!-- Step 2 - Strategy -->
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center lg:flex-row-reverse">
+          <!-- Timeline Dot -->
+          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full z-10 hidden lg:block" style="background-color: #DDD0B4; box-shadow: 0 0 0 6px rgba(221, 208, 180, 0.1);"></div>
+          
+          <!-- Content Card -->
+          <div class="lg:order-1">
+            <div class="group">
+              <div class="backdrop-blur-sm rounded-2xl p-6 md:p-8 border transition-all duration-300 group-hover:shadow-xl lg:text-right" style="background: rgba(221, 208, 180, 0.03); border-color: rgba(221, 208, 180, 0.1);">
+                <h3 class="text-xl md:text-2xl font-light tracking-wide uppercase mb-4" style="color: #DDD0B4;">Strategy</h3>
+                <p class="text-base leading-relaxed font-light mb-6" style="color: #5C5C5C; line-height: 1.6;">Defining the roadmap and creating strategic frameworks that align design decisions with business objectives.</p>
+                
+                <div class="space-y-2 lg:flex lg:flex-col lg:items-end">
+                  <div class="flex items-center text-sm font-light lg:flex-row-reverse" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 lg:mr-0 lg:ml-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Information architecture</span>
+                  </div>
+                  <div class="flex items-center text-sm font-light lg:flex-row-reverse" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 lg:mr-0 lg:ml-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>User journey mapping</span>
+                  </div>
+                  <div class="flex items-center text-sm font-light lg:flex-row-reverse" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 lg:mr-0 lg:ml-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Design principles</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Accent -->
+          <div class="lg:order-2">
+            <div class="w-full h-48 rounded-2xl border backdrop-blur-sm flex items-center justify-center" style="background: rgba(221, 208, 180, 0.02); border-color: rgba(221, 208, 180, 0.08);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center border" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
+                <svg class="w-6 h-6" style="color: #DDD0B4;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 - Design -->
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+          <!-- Timeline Dot -->
+          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full z-10 hidden lg:block" style="background-color: #DDD0B4; box-shadow: 0 0 0 6px rgba(221, 208, 180, 0.1);"></div>
+          
+          <!-- Content Card -->
+          <div class="lg:order-2">
+            <div class="group">
+              <div class="backdrop-blur-sm rounded-2xl p-6 md:p-8 border transition-all duration-300 group-hover:shadow-xl" style="background: rgba(221, 208, 180, 0.03); border-color: rgba(221, 208, 180, 0.1);">
+                <h3 class="text-xl md:text-2xl font-light tracking-wide uppercase mb-4" style="color: #DDD0B4;">Design</h3>
+                <p class="text-base leading-relaxed font-light mb-6" style="color: #5C5C5C; line-height: 1.6;">Crafting beautiful, functional interfaces that provide exceptional user experiences and drive engagement.</p>
+                
+                <div class="space-y-2">
+                  <div class="flex items-center text-sm font-light" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Wireframes & prototypes</span>
+                  </div>
+                  <div class="flex items-center text-sm font-light" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Visual design systems</span>
+                  </div>
+                  <div class="flex items-center text-sm font-light" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Interactive mockups</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Accent -->
+          <div class="lg:order-1">
+            <div class="w-full h-48 rounded-2xl border backdrop-blur-sm flex items-center justify-center" style="background: rgba(221, 208, 180, 0.02); border-color: rgba(221, 208, 180, 0.08);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center border" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
+                <svg class="w-6 h-6" style="color: #DDD0B4;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v14a2 2 0 01-2 2h-4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v14a4 4 0 004 4h4a2 2 0 002-2V5z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 - Development -->
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center lg:flex-row-reverse">
+          <!-- Timeline Dot -->
+          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full z-10 hidden lg:block" style="background-color: #DDD0B4; box-shadow: 0 0 0 6px rgba(221, 208, 180, 0.1);"></div>
+          
+          <!-- Content Card -->
+          <div class="lg:order-1">
+            <div class="group">
+              <div class="backdrop-blur-sm rounded-2xl p-6 md:p-8 border transition-all duration-300 group-hover:shadow-xl lg:text-right" style="background: rgba(221, 208, 180, 0.03); border-color: rgba(221, 208, 180, 0.1);">
+                <h3 class="text-xl md:text-2xl font-light tracking-wide uppercase mb-4" style="color: #DDD0B4;">Development</h3>
+                <p class="text-base leading-relaxed font-light mb-6" style="color: #5C5C5C; line-height: 1.6;">Bringing designs to life with clean, efficient code that ensures optimal performance and user experience.</p>
+                
+                <div class="space-y-2 lg:flex lg:flex-col lg:items-end">
+                  <div class="flex items-center text-sm font-light lg:flex-row-reverse" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 lg:mr-0 lg:ml-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Frontend development</span>
+                  </div>
+                  <div class="flex items-center text-sm font-light lg:flex-row-reverse" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 lg:mr-0 lg:ml-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Responsive implementation</span>
+                  </div>
+                  <div class="flex items-center text-sm font-light lg:flex-row-reverse" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 lg:mr-0 lg:ml-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Performance optimization</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Accent -->
+          <div class="lg:order-2">
+            <div class="w-full h-48 rounded-2xl border backdrop-blur-sm flex items-center justify-center" style="background: rgba(221, 208, 180, 0.02); border-color: rgba(221, 208, 180, 0.08);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center border" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
+                <svg class="w-6 h-6" style="color: #DDD0B4;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 - Launch -->
+        <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+          <!-- Timeline Dot -->
+          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full z-10 hidden lg:block" style="background-color: #DDD0B4; box-shadow: 0 0 0 6px rgba(221, 208, 180, 0.1);"></div>
+          
+          <!-- Content Card -->
+          <div class="lg:order-2">
+            <div class="group">
+              <div class="backdrop-blur-sm rounded-2xl p-6 md:p-8 border transition-all duration-300 group-hover:shadow-xl" style="background: rgba(221, 208, 180, 0.03); border-color: rgba(221, 208, 180, 0.1);">
+                <h3 class="text-xl md:text-2xl font-light tracking-wide uppercase mb-4" style="color: #DDD0B4;">Launch & Optimize</h3>
+                <p class="text-base leading-relaxed font-light mb-6" style="color: #5C5C5C; line-height: 1.6;">Deploying your solution and continuously improving based on real user feedback and performance data.</p>
+                
+                <div class="space-y-2">
+                  <div class="flex items-center text-sm font-light" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Quality assurance testing</span>
+                  </div>
+                  <div class="flex items-center text-sm font-light" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Performance monitoring</span>
+                  </div>
+                  <div class="flex items-center text-sm font-light" style="color: #5C5C5C;">
+                    <div class="w-1 h-1 rounded-full mr-3 flex-shrink-0" style="background-color: #DDD0B4;"></div>
+                    <span>Iterative improvements</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Accent -->
+          <div class="lg:order-1">
+            <div class="w-full h-48 rounded-2xl border backdrop-blur-sm flex items-center justify-center" style="background: rgba(221, 208, 180, 0.02); border-color: rgba(221, 208, 180, 0.08);">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center border" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
+                <svg class="w-6 h-6" style="color: #DDD0B4;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>
       
       <!-- Bottom accent -->
-      <div class="flex items-center justify-center mt-16">
-        <div class="flex items-center space-x-4 opacity-40">
-          <div class="w-12 h-px" style="background-color: #DDD0B4;"></div>
-          <div class="w-2 h-2 rounded-full" style="background-color: #DDD0B4;"></div>
-          <div class="w-12 h-px" style="background-color: #DDD0B4;"></div>
+      <div class="flex items-center justify-center mt-12">
+        <div class="flex items-center space-x-3 opacity-30">
+          <div class="w-8 h-px" style="background-color: #DDD0B4;"></div>
+          <div class="w-1.5 h-1.5 rounded-full" style="background-color: #DDD0B4;"></div>
+          <div class="w-8 h-px" style="background-color: #DDD0B4;"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+</body>
+</html>

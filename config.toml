@@ -26,16 +26,6 @@ title = 'Cyrus - Portfolio'
     url = "/about/"
     weight = 20
 
-  [[menu.main]]
-    name = "Programs"
-    url = "/programs/"
-    weight = 30
-
-  [[menu.main]]
-    name = "Media"
-    url = "/media/"
-    weight = 40
-
  
 
 [markup.goldmark.renderer]

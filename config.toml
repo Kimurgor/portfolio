@@ -25,6 +25,11 @@ title = 'Cyrus - Portfolio'
     name = "About"
     url = "/about/"
     weight = 20
+  
+   [[menu.main]]
+    name = "Logo"
+    url = "/logo/"
+    weight = 30
 
  
 

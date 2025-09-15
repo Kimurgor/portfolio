@@ -3,10 +3,10 @@ title: "Agiza-Pro Ecommerce App"
 slug: "agiza-pro"
 category: "UI/UX Design"
 description: "A modern mobile e-commerce application designed to help merchants showcase products, manage orders, and provide customers with a seamless shopping experience."
-image: "/images/portfolio/ecommerce-app.png"
+image: "/images/portfolio/agiza.png"
 technologies: ["Figma"]
 client: "Agiza-Pro"
-year: "2024"
+year: "2025"
 challenge: "Design an intuitive e-commerce platform that allows businesses to easily manage product catalogs, handle secure payments, and deliver smooth shopping experiences for customers while supporting business growth."
 
 # Color Palette (like Behance)

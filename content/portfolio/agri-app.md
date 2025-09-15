@@ -6,7 +6,7 @@ description: "A comprehensive agricultural mobile application designed to empowe
 image: "/images/portfolio/agri-app.png"
 technologies: ["Figma", "Sketch", "Principle", "Adobe XD"]
 client: "Kenya Agricultural Research Institute"
-year: "2023"
+year: "2025"
 challenge: "Bridge the digital divide in rural farming communities by creating an accessible mobile platform that addresses farmers' core challenges: market access, weather forecasting, crop management, and financial inclusion."
 
 # Color Palette (Agriculture-themed)

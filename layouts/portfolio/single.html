@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>{{ .Title }} - Design System | Cyrus Kimurgor</title>
+  <meta name="description" content="{{ .Params.description }}" />
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    body { 
+      font-family: 'Open Sans', sans-serif;
+      background-color: #000;
+      color: #5C5C5C;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      color: #DDD0B4;
+    }
+    .color-swatch {
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    .color-swatch:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .process-step {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    .process-step:nth-child(2) { animation-delay: 0.1s; }
+    .process-step:nth-child(3) { animation-delay: 0.2s; }
+    .process-step:nth-child(4) { animation-delay: 0.3s; }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .tooltip {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.9);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    
+    .color-swatch:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    .card {
+      background: rgba(221, 208, 180, 0.03);
+      border: 1px solid rgba(221, 208, 180, 0.1);
+      border-radius: 1rem;
+    }
+    
+    .section-title {
+      position: relative;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background-color: #DDD0B4;
+    }
+  </style>
+</head>
+
+<body class="font-light">
+  {{- partial "header.html" . -}}
+
+  <!-- Project Hero -->
+  <section class="bg-black py-16 md:py-20">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <!-- Back Button -->
+      <div class="mb-8">
+        <a href="/projects/" class="inline-flex items-center text-sm font-light transition-colors duration-300 group" style="color: #5C5C5C;">
+          <svg class="w-4 h-4 mr-2 transition-transform duration-300 group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Back to Portfolio
+        </a>
+      </div>
+
+      <!-- Project Header -->
+      <div class="mb-16">
+        <div class="inline-flex items-center px-4 py-2 rounded-full border mb-6" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
+          <span class="text-xs md:text-sm font-medium uppercase tracking-widest" style="color: #DDD0B4;">Design System</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extralight mb-6 tracking-tight" style="color: #DDD0B4;">
+          {{ .Title }}
+        </h1>
+        
+        <p class="text-xl md:text-2xl font-light max-w-4xl mb-8" style="color: #5C5C5C; line-height: 1.4;">
+          {{ .Params.description }}
+        </p>
+
+        <!-- Project Details -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div>
+            <h3 class="text-sm font-medium uppercase tracking-widest mb-2" style="color: #DDD0B4;">Type</h3>
+            <p class="text-lg font-light" style="color: #5C5C5C;">Design System</p>
+          </div>
+          <div>
+            <h3 class="text-sm font-medium uppercase tracking-widest mb-2" style="color: #DDD0B4;">Year</h3>
+            <p class="text-lg font-light" style="color: #5C5C5C;">{{ .Params.year }}</p>
+          </div>
+          <div>
+            <h3 class="text-sm font-medium uppercase tracking-widest mb-2" style="color: #DDD0B4;">Role</h3>
+            <p class="text-lg font-light" style="color: #5C5C5C;">{{ .Params.category }}</p>
+          </div>
+          <div>
+            <h3 class="text-sm font-medium uppercase tracking-widest mb-2" style="color: #DDD0B4;">Components</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 text-xs font-light rounded-full border" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.2); color: #5C5C5C;">Typography</span>
+              <span class="px-3 py-1 text-xs font-light rounded-full border" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.2); color: #5C5C5C;">Colors</span>
+              <span class="px-3 py-1 text-xs font-light rounded-full border" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.2); color: #5C5C5C;">UI Components</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="mb-20 rounded-3xl overflow-hidden" style="background: rgba(221, 208, 180, 0.03); border: 1px solid rgba(221, 208, 180, 0.1);">
+        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-full h-auto">
+      </div>
+
+      <!-- Design System Content -->
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Typography Section -->
+        <section class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light mb-8 tracking-tight section-title">Typography</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
+            <!-- Left Column - Font Info -->
+            <div class="space-y-8">
+              <div>
+                <p class="text-xs mb-1 uppercase tracking-widest" style="color: #5C5C5C;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+                <p class="text-xs mb-6" style="color: #5C5C5C;">abcdefghijklmnopqrstuvwxyz 1234567890</p>
+              </div>
+              
+              <div>
+                <h3 class="text-3xl font-medium" style="color: #DDD0B4;">Montserrat & Open Sans</h3>
+                <p class="mt-2" style="color: #5C5C5C;">A harmonious combination of a display font and a readable sans-serif.</p>
+              </div>
+            </div>
+
+            <!-- Right Column - Typography Example -->
+            <div class="card rounded-2xl p-8 text-white" style="background-color: {{ index .Params.colorPalette 0 "hex" }};">
+              <h3 class="text-2xl font-semibold mb-2">This is a heading</h3>
+              <p class="opacity-75 text-sm mb-4">This is a sub - heading</p>
+              <p class="opacity-60 text-xs">This is a paragraph</p>
+            </div>
+          </div>
+          
+          <!-- Typography Hierarchy -->
+          <div class="card rounded-xl p-8 mt-12">
+            <h3 class="text-2xl font-semibold mb-1" style="color: #DDD0B4;">Heading 1</h3>
+            <h4 class="text-xl font-medium mb-1" style="color: #5C5C5C;">Heading 2</h4>
+            <h5 class="text-lg font-medium mb-1" style="color: #5C5C5C;">Heading 3</h5>
+            <p class="text-base mb-2" style="color: #5C5C5C;">Body Text</p>
+            <p class="text-sm" style="color: #5C5C5C;">Caption</p>
+          </div>
+        </section>
+
+        <!-- Color Palette -->
+        <section class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light mb-8 tracking-tight section-title">Colour Style</h2>
+          <div class="flex flex-wrap gap-6 mb-6">
+            {{ range .Params.colorPalette }}
+            <div class="color-swatch relative w-20 h-20 md:w-24 md:h-24 rounded-xl shadow-lg" style="background-color: {{ .hex }};">
+              <div class="tooltip">{{ .hex }}<br>{{ .name }}</div>
+            </div>
+            {{ end }}
+          </div>
+          <div class="flex flex-wrap gap-8 text-sm font-mono" style="color: #5C5C5C;">
+            {{ range .Params.colorPalette }}
+            <span>{{ .hex }}</span>
+            {{ end }}
+          </div>
+        </section>
+
+        <!-- UI Components Grid -->
+        
+
+        <!-- User Persona Section -->
+        {{ if .Params.userPersona }}
+        <section class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light mb-8 tracking-tight section-title">User Persona</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <!-- Left Column - Photo and Basic Info -->
+            <div>
+              <div class="card rounded-2xl p-8">
+                <div class="w-24 h-24 rounded-2xl mb-6 bg-cover bg-center" style="background-image: url('{{ .Params.userPersona.photo }}');"></div>
+                
+                <h3 class="text-2xl font-semibold mb-6" style="color: #DDD0B4;">{{ .Params.userPersona.name }}</h3>
+                
+                <div class="space-y-3">
+                  <div class="flex justify-between">
+                    <span class="text-sm font-medium" style="color: #5C5C5C;">Age</span>
+                    <span class="text-sm" style="color: #DDD0B4;">{{ .Params.userPersona.age }}</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-sm font-medium" style="color: #5C5C5C;">Occupation</span>
+                    <span class="text-sm" style="color: #DDD0B4;">{{ .Params.userPersona.occupation }}</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-sm font-medium" style="color: #5C5C5C;">Location</span>
+                    <span class="text-sm" style="color: #DDD0B4;">{{ .Params.userPersona.location }}</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-sm font-medium" style="color: #5C5C5C;">Crop</span>
+                    <span class="text-sm" style="color: #DDD0B4;">{{ .Params.userPersona.crop }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column - Bio and Goals -->
+            <div class="space-y-8">
+              <div>
+                <h4 class="text-lg font-semibold mb-4" style="color: #DDD0B4;">Bio</h4>
+                <p class="text-sm leading-relaxed" style="color: #5C5C5C;">{{ .Params.userPersona.bio }}</p>
+              </div>
+              
+              <div>
+                <h4 class="text-lg font-semibold mb-4" style="color: #DDD0B4;">Goals & Needs</h4>
+                <ul class="space-y-2">
+                  {{ range .Params.userPersona.goals }}
+                  <li class="text-sm flex items-start" style="color: #5C5C5C;">
+                    <span class="w-1.5 h-1.5 rounded-full mt-2 mr-3 flex-shrink-0" style="background-color: #DDD0B4;"></span>
+                    {{ . }}
+                  </li>
+                  {{ end }}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        {{ end }}
+
+        <!-- Problem & Solution Sections -->
+        <section class="mb-20 space-y-16">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-light mb-6 tracking-tight section-title">Problem Statement</h2>
+            <p class="leading-relaxed max-w-4xl" style="color: #5C5C5C;">{{ .Params.challenge }}</p>
+          </div>
+          
+          <div>
+            <h2 class="text-3xl md:text-4xl font-light mb-6 tracking-tight section-title">Problem Solution</h2>
+            <p class="leading-relaxed max-w-4xl" style="color: #5C5C5C;">{{ .Params.solution }}</p>
+          </div>
+        </section>
+
+        <!-- Design Process -->
+        {{ if .Params.process }}
+        <section class="mb-20">
+          <h2 class="text-3xl md:text-4xl font-light mb-8 tracking-tight section-title">Design Process</h2>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {{ range $index, $step := .Params.process }}
+            <div class="process-step text-center p-6 rounded-2xl card">
+              <div class="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center font-semibold" style="background-color: #DDD0B4; color: #000;">
+                {{ add $index 1 }}
+              </div>
+              <h4 class="text-lg font-medium mb-2" style="color: #DDD0B4;">{{ .title }}</h4>
+              <p class="text-sm font-light" style="color: #5C5C5C;">{{ .description }}</p>
+            </div>
+            {{ end }}
+          </div>
+        </section>
+        {{ end }}
+
+        <!-- Research & Discovery -->
+        {{ if .Params.research }}
+        <div class="mb-16">
+          <h2 class="text-3xl md:text-4xl font-light mb-6 tracking-tight section-title">Research & Discovery</h2>
+          <p class="text-lg font-light leading-relaxed mb-8" style="color: #5C5C5C;">{{ .Params.research.description }}</p>
+          
+          {{ if .Params.research.insights }}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {{ range .Params.research.insights }}
+            <div class="p-6 rounded-2xl card">
+              <h4 class="text-lg font-medium mb-3" style="color: #DDD0B4;">{{ .title }}</h4>
+              <p class="text-sm font-light" style="color: #5C5C5C;">{{ .description }}</p>
+            </div>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+
+        <!-- Key Features -->
+        {{ if .Params.keyFeatures }}
+        <div class="mb-16">
+          <h2 class="text-3xl md:text-4xl font-light mb-8 tracking-tight section-title">Key Features</h2>
+          <div class="space-y-8">
+            {{ range .Params.keyFeatures }}
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+              <div class="md:w-1/2">
+                <h3 class="text-xl font-medium mb-4" style="color: #DDD0B4;">{{ .title }}</h3>
+                <p class="text-lg font-light leading-relaxed" style="color: #5C5C5C;">{{ .description }}</p>
+              </div>
+              <div class="md:w-1/2">
+                <div class="rounded-2xl overflow-hidden card">
+                  <img src="{{ .image }}" alt="{{ .title }}" class="w-full h-auto">
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+
+        <!-- Visual Showcase -->
+        {{ if .Params.gallery }}
+        <div class="mb-16">
+          <h2 class="text-3xl md:text-4xl font-light mb-8 tracking-tight section-title">Visual Showcase</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {{ range .Params.gallery }}
+            <div class="rounded-2xl overflow-hidden card">
+              <img src="{{ . }}" alt="Project screenshot" class="w-full h-auto">
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+
+        <!-- Lessons Learned -->
+        {{ if .Params.lessons }}
+        <div class="mb-16">
+          <h2 class="text-3xl md:text-4xl font-light mb-6 tracking-tight section-title">Lessons Learned</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {{ range .Params.lessons }}
+            <div class="p-6 rounded-2xl card">
+              <h4 class="text-lg font-medium mb-3" style="color: #DDD0B4;">{{ .title }}</h4>
+              <p class="text-sm font-light" style="color: #5C5C5C;">{{ .description }}</p>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+
+        <!-- Results & Impact -->
+        <div class="mb-16">
+          <h2 class="text-3xl md:text-4xl font-light mb-6 tracking-tight section-title">Results & Impact</h2>
+          <p class="text-lg font-light leading-relaxed mb-8" style="color: #5C5C5C;">{{ .Params.results }}</p>
+          
+          <!-- Metrics -->
+          {{ if .Params.metrics }}
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {{ range .Params.metrics }}
+            <div class="text-center p-6 rounded-2xl card">
+              <div class="text-3xl font-light mb-2" style="color: #DDD0B4;">{{ .value }}</div>
+              <div class="text-sm font-light" style="color: #5C5C5C;">{{ .label }}</div>
+            </div>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+
+
+        <!-- Bottom Navigation -->
+        <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t gap-4" style="border-color: rgba(221, 208, 180, 0.1);">
+          <a href="/projects/" class="inline-flex items-center px-6 py-3 rounded-full border transition-all duration-300 hover:shadow-lg" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.2); color: #DDD0B4;">
+            View All Projects
+          </a>
+          <a href="/contact/" class="inline-flex items-center px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg group" style="background-color: #DDD0B4; color: #000;">
+            Let's Work Together
+            <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Copy color hex to clipboard on click
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        const color = swatch.style.backgroundColor;
+        // Convert RGB to HEX if needed
+        const hex = rgbToHex(color) || swatch.querySelector('.tooltip').textContent.split('\n')[0];
+        navigator.clipboard.writeText(hex);
+        
+        // Show feedback
+        const tooltip = swatch.querySelector('.tooltip');
+        const originalText = tooltip.innerHTML;
+        tooltip.innerHTML = 'Copied!';
+        setTimeout(() => {
+          tooltip.innerHTML = originalText;
+        }, 1000);
+      });
+    });
+
+    function rgbToHex(rgb) {
+      if (rgb.startsWith('#')) return rgb;
+      const result = rgb.match(/\d+/g);
+      if (!result) return null;
+      return "#" + ((1 << 24) + (parseInt(result[0]) << 16) + (parseInt(result[1]) << 8) + parseInt(result[2])).toString(16).slice(1);
+    }
+  </script>
+</body>
+</html>

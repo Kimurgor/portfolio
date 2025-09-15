@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Explore selected projects by Cyrus Kimurgor – a curated collection of design solutions crafted with precision and creativity."
+    />
+    <meta
+      name="keywords"
+      content="Portfolio, Product Design, UI/UX, Graphic Design, Branding, Cyrus Kimurgor"
+    />
+    <title>Portfolio - Cyrus Kimurgor | Product Designer</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Cyrus Kimurgor",
+        "jobTitle": "Product Designer",
+        "url": "{{ .Site.BaseURL }}",
+        "email": "kimurgorcyrus10@gmail.com"
+      }
+    </script>
+  </head>
+
+  <body class="bg-black font-light">
+    {{- partial "header.html" . -}}
+
+    <!-- Portfolio Section -->
+    <section class="bg-black py-16 md:py-20">
+      <div class="container mx-auto px-4">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center px-4 py-2 rounded-full border mb-6" style="background-color: rgba(221, 208, 180, 0.05); border-color: rgba(221, 208, 180, 0.15);">
+            <span class="text-xs md:text-sm font-medium uppercase tracking-widest" style="color: #DDD0B4;">Portfolio</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-extralight mb-4 tracking-tight" style="color: #DDD0B4;">
+            Selected Work
+          </h2>
+          <p class="text-lg md:text-xl font-light max-w-2xl mx-auto mb-8" style="color: #5C5C5C;">
+            A curated collection of my latest projects and design solutions
+          </p>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {{ range $index, $element := .Site.Data.portfolio.content.projects }}
+            <div class="group relative overflow-hidden rounded-3xl aspect-[4/3] cursor-pointer backdrop-blur-sm border transition-all duration-500 hover:shadow-2xl" style="background: rgba(221, 208, 180, 0.03); border-color: rgba(221, 208, 180, 0.1);">
+              
+              <!-- Project Image -->
+              <div class="absolute inset-0 rounded-3xl overflow-hidden">
+                {{ if .image }}
+                <img src="{{ .image }}" alt="{{ .name }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                {{ else }}
+                <!-- Placeholder -->
+                <div class="w-full h-full flex items-center justify-center" style="background: linear-gradient(135deg, rgba(221, 208, 180, 0.1), rgba(92, 92, 92, 0.1));">
+                  <div class="text-center">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 mx-auto" style="background-color: rgba(221, 208, 180, 0.1); border: 1px solid rgba(221, 208, 180, 0.2);">
+                      <svg class="w-8 h-8" style="color: #DDD0B4;" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                      </svg>
+                    </div>
+                    <p class="text-sm font-light" style="color: #5C5C5C;">{{ .name }}</p>
+                  </div>
+                </div>
+                {{ end }}
+              </div>
+
+              <!-- Overlay -->
+              <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-500 rounded-3xl"></div>
+
+              <!-- Project Info -->
+              <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                <div class="space-y-3">
+                  <div class="inline-flex items-center px-3 py-1 rounded-full border text-xs font-light uppercase tracking-widest backdrop-blur-sm" style="background-color: rgba(221, 208, 180, 0.1); border-color: rgba(221, 208, 180, 0.3); color: #DDD0B4;">
+                    {{ .category | default "DESIGN" }}
+                  </div>
+                  <h3 class="text-2xl md:text-3xl font-light tracking-wide" style="color: #DDD0B4;">{{ .name }}</h3>
+                  {{ if .text }}
+                  <p class="text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="color: #5C5C5C; line-height: 1.5;">
+                    {{ .text }}
+                  </p>
+                  {{ end }}
+                </div>
+              </div>
+
+              <!-- Hover Glow -->
+              <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: linear-gradient(to bottom right, rgba(221, 208, 180, 0.08), transparent);"></div>
+
+              <!-- Corner Accents -->
+              <div class="absolute top-6 right-6 w-4 h-4 border-t border-r transition-all duration-300 rounded-tr-lg opacity-0 group-hover:opacity-60" style="border-color: #DDD0B4;"></div>
+              <div class="absolute bottom-6 left-6 w-4 h-4 border-b border-l transition-all duration-300 rounded-bl-lg opacity-0 group-hover:opacity-60" style="border-color: #DDD0B4;"></div>
+
+              <!-- Updated Link - Now points to individual portfolio pages -->
+              {{ if .slug }}
+              <a href="/portfolio/{{ .slug }}/" class="absolute inset-0 z-10" aria-label="View {{ .name }} project details"></a>
+              {{ else }}
+              <!-- Fallback for projects without slugs -->
+              <a href="/portfolio/{{ .name | urlize }}/" class="absolute inset-0 z-10" aria-label="View {{ .name }} project details"></a>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+
+          <!-- Bottom Accent -->
+          <div class="flex items-center justify-center mt-16">
+            <div class="flex items-center space-x-4 opacity-40">
+              <div class="w-12 h-px" style="background-color: #DDD0B4;"></div>
+              <div class="w-2 h-2 rounded-full" style="background-color: #DDD0B4;"></div>
+              <div class="w-12 h-px" style="background-color: #DDD0B4;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </body>
+</html>

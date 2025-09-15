@@ -2,6 +2,10 @@ baseURL = ''
 languageCode = 'en-us'
 title = 'Cyrus - Portfolio'
 
+# Permalinks configuration for portfolio pages
+[permalinks]
+  portfolio = '/portfolio/:slug/'
+
 [related]
   threshold = 1
   toLower = true
@@ -31,7 +35,7 @@ title = 'Cyrus - Portfolio'
     url = "/logo/"
     weight = 30
 
- 
+
 
 [markup.goldmark.renderer]
   unsafe = true

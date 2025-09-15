@@ -11,7 +11,7 @@
       <p class="text-lg md:text-xl font-light max-w-2xl mx-auto mb-8" style="color: #5C5C5C;">
         A curated collection of my latest projects and design solutions
       </p>
-      <a href="/portfolio" class="inline-flex items-center text-sm font-light uppercase tracking-widest transition-all duration-300 hover:translate-x-1" style="color: #DDD0B4;">
+      <a href="/projects" class="inline-flex items-center text-sm font-light uppercase tracking-widest transition-all duration-300 hover:translate-x-1" style="color: #DDD0B4;">
         <span>View All Projects</span>
         <div class="w-6 h-px ml-4 mr-2" style="background-color: #DDD0B4;"></div>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -75,9 +75,14 @@
           <div class="absolute top-6 right-6 w-4 h-4 border-t border-r transition-all duration-300 rounded-tr-lg opacity-0 group-hover:opacity-60" style="border-color: #DDD0B4;"></div>
           <div class="absolute bottom-6 left-6 w-4 h-4 border-b border-l transition-all duration-300 rounded-bl-lg opacity-0 group-hover:opacity-60" style="border-color: #DDD0B4;"></div>
 
-          <!-- Click overlay for navigation -->
-          {{ if .link }}
+          <!-- Updated Click overlay for navigation with slug support -->
+          {{ if .slug }}
+          <a href="/portfolio/{{ .slug }}/" class="absolute inset-0 z-10" aria-label="View {{ .name }} project details"></a>
+          {{ else if .link }}
           <a href="{{ .link }}" class="absolute inset-0 z-10" aria-label="View {{ .name }} project"></a>
+          {{ else }}
+          <!-- Fallback: generate slug from project name -->
+          <a href="/portfolio/{{ .name | urlize }}/" class="absolute inset-0 z-10" aria-label="View {{ .name }} project details"></a>
           {{ end }}
         </div>
         {{ end }}

@@ -1,13 +1,13 @@
 ---
-title: "Agiza-pro App"
+title: "Agiza-Pro Ecommerce App"
 slug: "agiza-pro"
 category: "UI/UX Design"
-description: "A comprehensive mobile point-of-sale application designed to streamline transactions and inventory management through intuitive user experience and seamless payment processing."
-image: "/images/portfolio/mobile-pos.png"
+description: "A modern mobile e-commerce application designed to help merchants showcase products, manage orders, and provide customers with a seamless shopping experience."
+image: "/images/portfolio/ecommerce-app.png"
 technologies: ["Figma"]
 client: "Agiza-Pro"
 year: "2024"
-challenge: "Create an efficient mobile POS system that simplifies transactions while providing real-time inventory tracking and comprehensive sales analytics for businesses of all sizes."
+challenge: "Design an intuitive e-commerce platform that allows businesses to easily manage product catalogs, handle secure payments, and deliver smooth shopping experiences for customers while supporting business growth."
 
 # Color Palette (like Behance)
 colorPalette:
@@ -21,74 +21,74 @@ colorPalette:
 
 # Research & Discovery Section
 research:
-  description: "We conducted extensive user research with retail businesses to understand their pain points with existing POS systems. Through interviews, surveys, and observational studies, we identified key areas for improvement."
+  description: "We conducted user research with small and medium-sized businesses as well as end customers to uncover pain points in online shopping and store management. Through surveys and interviews, we identified critical challenges faced by both sides."
   insights:
-    - title: "Transaction Speed"
-      description: "68% of merchants reported slow checkout processes during peak hours, leading to customer frustration and lost sales."
-    - title: "Inventory Management"
-      description: "Small businesses struggled with real-time inventory tracking, often discovering stockouts only after customer inquiries."
-    - title: "Payment Processing"
-      description: "Multiple payment methods created confusion, with staff requiring extensive training on different processes."
-    - title: "Analytics & Reporting"
-      description: "Business owners lacked accessible insights into sales patterns and customer behavior."
+    - title: "Product Discovery"
+      description: "Customers struggled to find products quickly due to poor navigation and lack of filters."
+    - title: "Order Management"
+      description: "Merchants found it difficult to track orders and communicate effectively with customers."
+    - title: "Payment Experience"
+      description: "Shoppers wanted multiple payment options, while merchants faced delays in settlements."
+    - title: "Trust & Reliability"
+      description: "Buyers reported abandoning carts due to unclear delivery timelines and lack of reviews."
 
 # Design Process
 process:
   - title: "Research"
-    description: "User interviews, competitive analysis, and market research to identify opportunities"
+    description: "User interviews, competitor analysis, and customer journey mapping to identify gaps in existing e-commerce solutions."
   - title: "Ideation"
-    description: "Brainstorming sessions, user journey mapping, and feature prioritization workshops"
+    description: "Feature brainstorming, prioritization workshops, and user flow mapping."
   - title: "Design"
-    description: "Wireframing, prototyping, and iterative design based on user feedback"
+    description: "Wireframes, prototypes, and high-fidelity UI design with iterative testing."
   - title: "Testing"
-    description: "Usability testing, A/B testing, and performance optimization"
+    description: "Usability tests, checkout flow testing, and feedback-driven improvements."
 
-solution: "Designed an intuitive mobile-first experience with streamlined checkout flow, integrated payment processing, and seamless synchronization with existing inventory systems. The solution prioritizes speed, accuracy, and ease of use."
+solution: "Created an end-to-end e-commerce mobile experience that balances merchant needs with customer convenience. The solution emphasizes easy product discovery, secure transactions, transparent delivery tracking, and intuitive store management."
 
 # Key Features with detailed explanations
 keyFeatures:
-  - title: "One-Touch Checkout"
-    description: "Simplified checkout process that reduces transaction time by 60%. Smart product recognition and quick payment processing ensure smooth customer experience."
-
-  - title: "Real-Time Inventory"
-    description: "Live inventory tracking with automatic low-stock alerts. Integration with suppliers for seamless restocking and inventory management."
+  - title: "Smart Product Discovery"
+    description: "Advanced search and filtering options help customers quickly find products. Personalized recommendations improve engagement."
  
-  - title: "Advanced Analytics"
-    description: "Comprehensive sales analytics with customizable reports. Track peak hours, popular products, and customer behavior patterns."
+  - title: "Seamless Checkout"
+    description: "Streamlined checkout process with support for multiple payment methods and one-click reorders."
   
-  - title: "Multi-Payment Support"
-    description: "Accept all major payment methods including contactless payments, mobile wallets, and traditional card payments in one unified interface."
-   
+  - title: "Order & Delivery Tracking"
+    description: "Real-time order updates and delivery tracking to build customer trust and reduce uncertainty."
+  
+  - title: "Merchant Dashboard"
+    description: "Merchants can manage inventory, update product listings, and track order fulfillment in real-time."
+  
+  - title: "Customer Reviews & Ratings"
+    description: "Integrated feedback system that builds trust and helps businesses improve their offerings."
 
 gallery:
   - "/images/portfolio/agiza-pro/Home.png"
-  - "/images/portfolio/agiza-pro/merchant.png"
+  - "/images/portfolio/agiza-pro/Product.png"
   - "/images/portfolio/agiza-pro/Cart.png"
-  - "/images/portfolio/agiza-pro/orders.png"
-
+  - "/images/portfolio/agiza-pro/Orders.png"
 
 # Lessons Learned
 lessons:
-  - title: "User Context Matters"
-    description: "Retail environments are fast-paced and often chaotic. The interface needed to be extremely simple and error-resistant."
-  - title: "Offline Functionality"
-    description: "Internet connectivity issues are common in retail. Building robust offline capabilities was crucial for reliability."
-  - title: "Hardware Integration"
-    description: "Seamless integration with existing hardware (card readers, receipt printers) was essential for adoption."
+  - title: "Customer Trust is Key"
+    description: "Transparent communication on delivery timelines and return policies significantly increases conversions."
+  - title: "Mobile-First is Essential"
+    description: "Most shoppers use mobile devices; optimizing for mobile performance was crucial."
+  - title: "Personalization Drives Engagement"
+    description: "Recommendation engines and personalized offers increased user engagement and retention."
 
-results: "The mobile POS solution transformed retail operations for our clients, delivering significant improvements in transaction speed, inventory accuracy, and overall business efficiency."
+results: "The e-commerce solution empowered merchants to digitize their stores, improve customer satisfaction, and scale online sales effectively."
 
 # Detailed Metrics
 metrics:
-  - value: "40%"
-    label: "Reduction in Transaction Time"
-  - value: "95%"
+  - value: "50%"
+    label: "Increase in Online Sales"
+  - value: "90%"
     label: "User Satisfaction Rate"
-  - value: "32%"
-    label: "Improvement in Checkout Efficiency"
-  - value: "25%"
-    label: "Increase in Sales Processing Accuracy"
+  - value: "35%"
+    label: "Improved Checkout Conversion Rate"
+  - value: "40%"
+    label: "Reduction in Cart Abandonment"
 
-nextSteps: "Based on user feedback and market demands, the next phase includes AI-powered inventory predictions, customer loyalty program integration, and advanced reporting features for multi-location businesses."
-
+nextSteps: "The next phase includes AI-powered product recommendations, social commerce integration, and advanced analytics for merchants to optimize marketing and sales strategies."
 ---

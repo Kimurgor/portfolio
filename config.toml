@@ -35,6 +35,10 @@ title = 'Cyrus - Portfolio'
     url = "/logo/"
     weight = 30
 
+   [[menu.main]]
+    name = "Posters"
+    url = "/posters/"
+    weight = 40
 
 
 [markup.goldmark.renderer]

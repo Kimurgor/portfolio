@@ -54,7 +54,6 @@ keyFeatures:
  
   - title: "Crop Management Guide"
     description: "Step-by-step farming guides with visual instructions, pest identification tools, and organic farming techniques tailored to local crops and conditions."
-    image: "/images/portfolio/agri-app/crop-guide-feature.jpg"
   - title: "Financial Services"
     description: "Integrated microfinance platform offering crop insurance, equipment loans, and digital payment solutions designed for rural banking needs."
 

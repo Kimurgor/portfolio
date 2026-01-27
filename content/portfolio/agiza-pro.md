@@ -64,7 +64,7 @@ keyFeatures:
 
 gallery:
   - "/images/portfolio/agiza-pro/Home.png"
-  - "/images/portfolio/agiza-pro/Product.png"
+  - "/images/portfolio/agiza-pro/merchant.png"
   - "/images/portfolio/agiza-pro/Cart.png"
   - "/images/portfolio/agiza-pro/Orders.png"
 

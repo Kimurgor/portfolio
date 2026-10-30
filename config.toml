@@ -52,14 +52,12 @@ title = 'Cyrus - Portfolio'
   
   # Social Media Links (for footer)
   [params.social]
-    facebook = "https://www.facebook.com/kimurgor.cyrus"
-    twitter = "https://x.com/kimurgorcyrus?t=Os0o4lQu4yms_hfXAmS_gg&s=09"  
-    instagram = "https://www.facebook.com/share/18uDMbDZgD/"
+    github = "https://github.com/Kimurgor"
     linkedin = "https://www.linkedin.com/in/cyrus-kimurgor-48a634210/"
   
   # SEO and Meta
-  description = "Cyrus Kimurgor - Web Designer & Developer. Premium web design, development, and SEO services to help your business stand out."
-  keywords = "web design, web development, SEO, portfolio, Kenya, Nairobi"
+  description = "Cyrus Kimurgor - Frontend Developer in Nairobi, Kenya. Responsive websites and interactive interfaces built with HTML, CSS, JavaScript, and TypeScript."
+  keywords = "frontend developer, HTML, CSS, JavaScript, TypeScript, Tailwind CSS, portfolio, Kenya, Nairobi"
   author = "Cyrus Kimurgor"
   
   # Site Settings

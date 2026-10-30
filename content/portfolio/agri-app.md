@@ -3,7 +3,7 @@ title: "AgriConnect Mobile App"
 slug: "agri-app"
 category: "UI/UX Design"
 description: "A comprehensive agricultural mobile application designed to empower farmers with modern technology, connecting them to market opportunities, weather insights, and sustainable farming practices."
-image: "/images/portfolio/agri-app.png"
+image: "/images/portfolio/ssg.png"
 technologies: ["Figma", "Sketch", "Principle", "Adobe XD"]
 client: "Kenya Agricultural Research Institute"
 year: "2025"
@@ -67,7 +67,7 @@ keyFeatures:
 gallery:
   - "/images/portfolio/agri-app/home.png"
   - "/images/portfolio/agri-app/detail.png"
-  - "/images/portfolio/agri-app/otp.png"
+  - "/images/portfolio/agri-app/OTP.png"
   - "/images/portfolio/agri-app/review.png"
 
 # Lessons Learned

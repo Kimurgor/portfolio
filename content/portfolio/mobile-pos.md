@@ -3,7 +3,7 @@ title: "Mobile POS App"
 slug: "mobile-pos"
 category: "UI/UX Design"
 description: "A comprehensive mobile point-of-sale application designed to streamline transactions and inventory management through intuitive user experience and seamless payment processing."
-image: "/images/portfolio/mobile-pos.png"
+image: "/images/portfolio/pos.png"
 technologies: ["Figma", "Sketch"]
 client: "DUKAPAQ"
 year: "2024"

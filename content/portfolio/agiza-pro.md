@@ -66,7 +66,7 @@ gallery:
   - "/images/portfolio/agiza-pro/Home.png"
   - "/images/portfolio/agiza-pro/merchant.png"
   - "/images/portfolio/agiza-pro/Cart.png"
-  - "/images/portfolio/agiza-pro/Orders.png"
+  - "/images/portfolio/agiza-pro/orders.png"
 
 # Lessons Learned
 lessons:

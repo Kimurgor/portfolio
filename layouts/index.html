@@ -1,28 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    
-    {{- partial "head.html" . -}}
-</head>
-
+<head>{{ partial "resume/head.html" . }}</head>
 <body>
-    {{- partial "header.html" . -}}
-    <main>
-        {{- partial "hero.html" . -}}
-    
-        {{- partial "program.html" . -}}
-        {{- partial "gallery.html" . -}}
-        
-        {{- partial "steps.html" . -}}
-
-        {{- partial "newsletter.html" . -}}
-        
-        
-        
-        
-    </main>
-    {{- partial "footer.html" . -}}
-</body>
-
-</html>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="page-shell">
+{{ partial "resume/toolbar.html" . }}
+<main id="main" class="panel-stack">
+<section class="panel bio" aria-labelledby="name">
+<div class="portrait" aria-label="Cyrus Kimurgor initials"><span>ck.</span></div>
+<div class="bio-info"><div class="bio-heading"><p class="availability"><span></span>Available for Work</p><div><h1 id="name">Cyrus Kimurgor</h1><p class="subtitle">Frontend Developer</p></div></div><div class="actions"><a class="pill" href="{{ "downloads/Cyrus_Kimurgor_CV.pdf" | relURL }}" download="Cyrus_Kimurgor_CV.pdf" title="Download Cyrus Kimurgor CV (PDF)">{{ partial "resume/icon.html" "download" }} Download CV</a><a class="pill contact-pill" href="mailto:kimurgorcyrus10@gmail.com">{{ partial "resume/icon.html" "mail" }} Get in Touch</a></div></div>
+</section>
+<section class="panel" aria-labelledby="overview"><h2 class="section-label" id="overview">Overview</h2><div class="overview-copy"><p>Frontend developer based in Nairobi, Kenya. I build responsive websites and interactive interfaces with HTML, CSS, JavaScript, and TypeScript.</p><p>I turn designs into clear, usable web experiences, with a focus on semantic markup, responsive layouts, and thoughtful interactions. My background in UI/UX design informs how I approach every interface.</p></div></section>
+<section class="panel" aria-labelledby="projects"><h2 class="section-label" id="projects">Selected Work</h2><div class="project-grid">
+{{ range .Site.Data.portfolio.content.projects }}{{ with $.Site.GetPage (printf "/portfolio/%s" .slug) }}
+{{ $image := .Params.image }}{{ if eq .File.ContentBaseName "mobile-pos" }}{{ $image = "/images/portfolio/pos.png" }}{{ else if eq .File.ContentBaseName "agri-app" }}{{ $image = "/images/portfolio/ssg.png" }}{{ end }}
+<a class="project" href="{{ .RelPermalink }}"><div class="project-image"><img src="{{ $image | relURL }}" alt="{{ .Title }} design preview" width="640" height="480" loading="lazy"></div><div class="project-info"><div><h3>{{ .Title }}</h3><p>{{ .Params.category }}</p></div><span class="arrow-box">{{ partial "resume/icon.html" "arrow" }}</span></div></a>
+{{ end }}{{ end }}
+</div><div class="text-links"><a href="{{ "logo/" | relURL }}">Logo collection {{ partial "resume/icon.html" "arrow" }}</a><a href="{{ "posters/" | relURL }}">Poster collection {{ partial "resume/icon.html" "arrow" }}</a></div></section>
+<section class="panel" aria-labelledby="experience">
+<h2 class="section-label" id="experience">Experience</h2>
+<article class="resume-entry">
+<div class="entry-heading"><span class="company-icon">FC</span><div><p class="eyebrow">Fidelity Connect Limited</p><h3>IT &amp; Web Designer</h3></div></div>
+<p>Design, build, and maintain the company website, ensuring functionality, security, and an optimal user experience. Apply UI/UX principles to create intuitive, responsive layouts with consistent branding across pages and screen sizes.</p>
+<p>Provide hardware, software, and network troubleshooting, support SEO and content management, and identify improvements to digital workflows.</p>
+<div class="entry-meta"><span>Jan 2026 &ndash; Present</span><span>Web Design &amp; ICT Support</span></div>
+</article>
+<article class="resume-entry">
+<div class="entry-heading"><span class="company-icon">D</span><div><p class="eyebrow">Dukapaq</p><h3>Lead UI/UX Designer &amp; Junior Software Developer</h3></div></div>
+<p>Led UI/UX design direction and standards across projects. Created wireframes, mockups, and interactive prototypes in Figma, conducted user research and usability testing, and maintained a design system and UI component library. Translated user needs and business requirements into accessible interface designs.</p>
+<p>Developed and maintained web applications using Vue/React for the frontend and Django for the backend. Collaborated on new features, wrote maintainable code, participated in code reviews, and debugged issues reported by users while keeping up with web development best practices.</p>
+<div class="entry-meta"><span>Sep 2023 &ndash; Oct 2025</span><span>UI/UX Design &amp; Software Development</span></div>
+</article>
+<article class="resume-entry">
+<div class="entry-heading"><span class="company-icon">P</span><div><p class="eyebrow">Postal Corporation of Kenya</p><h3>ICT Attache</h3></div></div>
+<p>Supported daily corporate ICT operations through hardware and software troubleshooting. Maintained, repaired, and installed computer systems and networks, and supported PABX telephone systems, structured cabling, and configuration.</p>
+<div class="entry-meta"><span>Sep 2018 &ndash; Nov 2018</span><span>ICT Support</span></div>
+</article>
+</section>
+<section class="panel" aria-labelledby="expertise"><h2 class="section-label" id="expertise">Expertise</h2><div class="service-list"><div><h3>Frontend Development</h3><p>Semantic HTML, CSS, JavaScript, and TypeScript for usable web interfaces.</p></div><div><h3>Responsive Web Interfaces</h3><p>Flexible layouts and Tailwind CSS styling across mobile, tablet, and desktop.</p></div><div><h3>Design to Code</h3><p>Turning Figma layouts and UI/UX concepts into interactive web experiences.</p></div></div></section>
+<section class="panel" aria-labelledby="tools"><h2 class="section-label" id="tools">Frontend Toolkit</h2><div class="tools-grid">
+{{ range (slice
+  (dict "name" "Figma" "detail" "Interface & prototyping" "logo" "figma" "url" "https://www.figma.com/")
+  (dict "name" "CSS" "detail" "Responsive layouts & styling" "logo" "css" "url" "https://developer.mozilla.org/en-US/docs/Web/CSS")
+  (dict "name" "TypeScript" "detail" "Typed JavaScript" "logo" "typescript" "url" "https://www.typescriptlang.org/")
+  (dict "name" "HTML" "detail" "Web structure & semantics" "logo" "html" "url" "https://html.spec.whatwg.org/")
+  (dict "name" "Tailwind CSS" "detail" "Utility-first styling" "logo" "tailwind" "url" "https://tailwindcss.com/")
+  (dict "name" "Git" "detail" "Version control" "logo" "git" "url" "https://git-scm.com/")
+  (dict "name" "JavaScript" "detail" "Interactive web experiences" "logo" "javascript" "url" "https://developer.mozilla.org/en-US/docs/Web/JavaScript")
+) }}
+<a class="tool" href="{{ .url }}" target="_blank" rel="noopener noreferrer"><span class="tool-icon"><img src="{{ printf "icons/tools/%s.svg" .logo | relURL }}" alt="" width="30" height="30" loading="lazy"></span><div><h3>{{ .name }}</h3><p>{{ .detail }}</p></div>{{ partial "resume/icon.html" "arrow" }}</a>{{ end }}
+</div></section>
+</main>{{ partial "resume/footer.html" . }}
+</div></body></html>
